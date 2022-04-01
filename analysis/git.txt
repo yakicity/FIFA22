@@ -8,3 +8,39 @@
 (analysis) C:\sub>echo analysis >> .git/info/sparse-checkout
 (analysis) C:\sub>git pull origin main
 
+
+どのディレクトリを編集できるか
+(analysis) C:\sub>git sparse-checkout list
+analysis
+
+
+このファイルのみをadd
+(analysis) C:\sub>git add analysis\git.txt
+warning: LF will be replaced by CRLF in analysis/git.txt.
+The file will have its original line endings in your working directory
+
+
+いまの状態
+(analysis) C:\sub>git status
+On branch sub
+You are in a sparse checkout with 50% of tracked files present.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   analysis/git.txt
+
+
+コミット
+(analysis) C:\sub>git commit -m 'git-practice'
+[sub c50631b] 'git-practice'
+ 1 file changed, 10 insertions(+)
+ create mode 100644 analysis/git.txt
+
+
+ログを見る（直近以外は消去）
+(analysis) C:\sub>git log
+commit c50631be60bccfb340fff11ed1e4dbbc71eda166 (HEAD -> sub)
+Author: yakicity <manchester.bungu@gmail.com>
+Date:   Fri Apr 1 18:21:05 2022 +0900
+
+    'git-practice'
