@@ -1,0 +1,10 @@
+ローカルのsubディレクトリから、このリポジトリのうちanalysisのみをpullするコード
+
+(analysis) C:\>mkdir sub
+(analysis) C:\>cd sub
+(analysis) C:\sub>git init
+(analysis) C:\sub>git config core.sparsecheckout true
+(analysis) C:\sub>git remote add origin https://github.com/yakicity/python.git
+(analysis) C:\sub>echo analysis >> .git/info/sparse-checkout
+(analysis) C:\sub>git pull origin main
+
