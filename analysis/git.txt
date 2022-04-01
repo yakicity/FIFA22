@@ -20,6 +20,44 @@ warning: LF will be replaced by CRLF in analysis/git.txt.
 The file will have its original line endings in your working directory
 
 
+コミット
+(analysis) C:\sub>git commit -m 'git-practice'
+[sub c50631b] 'git-practice'
+ 1 file changed, 10 insertions(+)
+ create mode 100644 analysis/git.txt
+
+
+マージする
+(analysis) C:\sub>git checkout main
+Switched to a new branch 'main'
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+(analysis) C:\sub>git merge sub
+Updating dcadc22..23ae38a
+Fast-forward
+ analysis/git.txt | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+ create mode 100644 analysis/git.txt
+
+これでローカルのmainにはマージできたのでリモートにも繁栄させる
+(analysis) C:\sub>git push
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/yakicity/python.git
+   dcadc22..23ae38a  main -> main
+これでマージ完了
+
+
+
+
+ログを見る（直近以外は消去）
+(analysis) C:\sub>git log
+commit c50631be60bccfb340fff11ed1e4dbbc71eda166 (HEAD -> sub)
+Author: yakicity <manchester.bungu@gmail.com>
+Date:   Fri Apr 1 18:21:05 2022 +0900
+
+    'git-practice'
+
+
 いまの状態
 (analysis) C:\sub>git status
 On branch sub
@@ -30,17 +68,11 @@ Changes to be committed:
         new file:   analysis/git.txt
 
 
-コミット
-(analysis) C:\sub>git commit -m 'git-practice'
-[sub c50631b] 'git-practice'
- 1 file changed, 10 insertions(+)
- create mode 100644 analysis/git.txt
+なにがaddされたか確認
+(analysis) C:\sub>git diff --cached
+か、
+(analysis) C:\sub>git diff --cached HEAD
 
 
-ログを見る（直近以外は消去）
-(analysis) C:\sub>git log
-commit c50631be60bccfb340fff11ed1e4dbbc71eda166 (HEAD -> sub)
-Author: yakicity <manchester.bungu@gmail.com>
-Date:   Fri Apr 1 18:21:05 2022 +0900
-
-    'git-practice'
+特定のaddをリセット
+(analysis) C:\sub>git reset /analysis/git.txt
